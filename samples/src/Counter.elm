@@ -27,8 +27,10 @@ view : Model -> Html Msg
 view model =
     p []
         [ text ("Counter is " ++ String.fromInt model)
-        , button [ onClick Increment ] [ text "+" ]
-        , button [ onClick Decrement ] [ text "-" ]
+        , div []
+            [ button [ onClick Increment ] [ text "+" ]
+            , button [ onClick Decrement ] [ text "-" ]
+            ]
         ]
 
 
@@ -39,8 +41,12 @@ update msg model =
             model + 1
 
         Decrement ->
-            if model > 0 then
-                model - 1
+            let
+                decremented =
+                    model - 1
+            in
+            if decremented >= 0 then
+                decremented
 
             else
                 model
