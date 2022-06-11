@@ -8,9 +8,10 @@ import Http
 import Json.Decode as D
 
 
+main : Program () Model Msg
 main =
     Browser.element
-        { init = init, update = update, subscriptions = subscriptions, view = view }
+        { init = init, update = update, subscriptions = always Sub.none, view = view }
 
 
 
@@ -56,10 +57,6 @@ view model =
         ]
 
 
-role value =
-    attribute "role" value
-
-
 viewJoke : Model -> Html Msg
 viewJoke model =
     case model of
@@ -75,11 +72,16 @@ viewJoke model =
                 [ text ("Did you know? " ++ jokeText) ]
 
 
-viewSpinner : Html msg
+viewSpinner : Html Msg
 viewSpinner =
     div [ class "spinner-border", role "status" ]
         [ span [ class "sr-only" ] [ text "Loading..." ]
         ]
+
+
+role : String -> Attribute Msg
+role value =
+    attribute "role" value
 
 
 
@@ -99,15 +101,6 @@ update msg _ =
 
         RefreshJoke ->
             ( Loading, getRandomJoke )
-
-
-
--- SUBSCRIPTIONS
-
-
-subscriptions : Model -> Sub Msg
-subscriptions _ =
-    Sub.none
 
 
 

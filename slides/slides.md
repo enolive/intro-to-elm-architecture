@@ -247,15 +247,15 @@ main = Browser.element
 type alias Model = ...
 type Msg = ...
 
-init : () -> (Model, Cmd)
+init : () -> (Model, Cmd Msg)
 ...
 view : Model -> Html Msg
 ...
-update : Msg -> Model -> (Model, Cmd)
+update : Msg -> Model -> (Model, Cmd Msg)
 ...
 
-subscriptions : Sub
-subscriptions = Sub.none
+subscriptions : Model -> Sub Msg
+...
 ```
 
 </v-click>

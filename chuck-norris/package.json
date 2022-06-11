@@ -5,9 +5,10 @@
   "scripts": {
     "watch": "elm-live src/Main.elm --pushstate --port=8081 --open -- --output=main.js --debug",
     "build:dev": "elm make src/Main.elm --output main.js --debug",
-    "build:prod": "elm make src/Main.elm --output main.js --optimize",
+    "build:prod": "elm make src/Main.elm --output main.js --optimize && npm run uglify",
     "test": "elm-test",
-    "lint": "elm-format src/ --validate"
+    "lint": "elm-format src/ --validate",
+    "uglify": "uglifyjs main.js --compress 'pure_funcs=[F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9],pure_getters,keep_fargs=false,unsafe_comps,unsafe' | uglifyjs --mangle --output main.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "elm": "^0.19.1-5",
     "elm-format": "^0.8.5",
     "elm-live": "^4.0.2",
-    "elm-test": "^0.19.1-revision7"
+    "elm-test": "^0.19.1-revision7",
+    "uglify-js": "^3.16.0"
   }
 }
