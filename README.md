@@ -5,7 +5,7 @@ Elm's architecture.
 
 ## View Online
 
-* [Slides](https://enolive.github.io/intro-to-elm-architecture/slides)
+* [Slides](https://enolive.github.io/intro-to-elm-architecture)
 * [Chuck Norris App in Elm](https://enolive.github.io/intro-to-elm-architecture/chuck-norris-app)
 
 ## Content
