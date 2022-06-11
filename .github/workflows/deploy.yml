@@ -11,7 +11,7 @@ jobs:
       - name: Build Slides
         run: |
           npm ci
-          npm run build -- -o ../dist/slides --base /intro-to-elm-architecture/slides 
+          npm run build -- -o ../dist --base /intro-to-elm-architecture
         working-directory: ./slides
       - name: Build Chuck Norris App
         run: |
