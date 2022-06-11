@@ -33,21 +33,21 @@ init =
             , "Conquer the World"
             ]
     in
-    { todos = List.indexedMap (\index item -> newTodo index item) initTodos
+    { todos = List.indexedMap mkTodo initTodos
     , nextTitle = ""
     , nextId = List.length initTodos
     }
 
 
 type Msg
-    = ChangeTitle String
+    = GotNewTitle String
     | ToggleTodo Int Bool
     | AddTodo
     | RemoveTodo Int
 
 
-newTodo : Int -> String -> Todo
-newTodo nextId nextTitle =
+mkTodo : Int -> String -> Todo
+mkTodo nextId nextTitle =
     { id = nextId, title = nextTitle, done = False }
 
 
@@ -58,11 +58,11 @@ newTodo nextId nextTitle =
 update : Msg -> Model -> Model
 update msg model =
     case msg of
+        GotNewTitle newTitle ->
+            { model | nextTitle = newTitle }
+
         ToggleTodo id _ ->
             toggleTodo id model
-
-        ChangeTitle newTitle ->
-            { model | nextTitle = newTitle }
 
         AddTodo ->
             addTodo model
@@ -88,7 +88,7 @@ addTodo model =
 
 addTodoWith : Int -> String -> List Todo -> List Todo
 addTodoWith nextId nextTitle todos =
-    newTodo nextId nextTitle :: todos
+    mkTodo nextId nextTitle :: todos
 
 
 toggleTodo : Int -> Model -> Model
@@ -123,7 +123,7 @@ view model =
 viewAddTodo : Model -> Html Msg
 viewAddTodo model =
     form [ onSubmit AddTodo ]
-        [ input [ placeholder "Title", onInput ChangeTitle, value model.nextTitle ] []
+        [ input [ placeholder "Title", onInput GotNewTitle, value model.nextTitle ] []
         , input [ type_ "submit", value "Create" ] []
         ]
 

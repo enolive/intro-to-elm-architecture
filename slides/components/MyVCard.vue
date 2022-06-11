@@ -1,3 +1,3 @@
 <template>
-  <v-card githubUrl="https://github.com/enolive/spring-tdd" twitterHandle="ChristophWelcz" />
+  <v-card githubUrl="https://github.com/enolive/intro-to-elm-architecture/" twitterHandle="ChristophWelcz" />
 </template>

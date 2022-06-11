@@ -1,5 +1,4 @@
 ---
-# try also 'default' to start simple
 theme: datev-scc
 class: 'text-center'
 lineNumbers: true
@@ -8,12 +7,15 @@ info: |
   What Elm does and why it's relevant
 drawings:
   persist: false
+download: true
 layout: intro
 ---
 
-# Introduction to Elm Architecture
+# The origin of Redux
 
-The origin of Redux
+Introduction to Elm Architecture
+
+<carbon-link /> [enolive.github.io/intro-to-elm-architecture](https://enolive.github.io/intro-to-elm-architecture/slides)
 
 <my-v-card />
 
