@@ -1,0 +1,3 @@
+[class~='language-elm']:before {
+  content: 'elm';
+}

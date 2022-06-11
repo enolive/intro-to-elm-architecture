@@ -26,15 +26,18 @@ sub: Core Language
 ---
 
 ---
+class: text-3xl
+---
+
+# Quick Facts
 
 <div class="fade">
 
 <v-clicks>
 
 - since 2012 (current version 0.19.1)
-- purely functional
-- static typed
-- syntax similar to Haskell
+- purely functional, static typed language
+- syntax similar to Haskell, but easier
 - single purpose language for Frontend Development
 - inspiration for Redux
 
@@ -42,18 +45,24 @@ sub: Core Language
 
 </div>
 
+<style>
+  h1 {
+    @apply !text-2xl
+  }
+</style>
+
 ---
 
 # Ecosystem
 
-| Tool       | Description                       |
+| tool       | description                       |
 |------------|-----------------------------------|
 | elm        | compiler                          |
 | elm-format | opinionated formatter             |
 | elm-test   | testing framework                 |
 | elm-live   | better dev server with hot reload |
 
-install by `npm i <package> -g`
+install by `npm i <tool> -g`
 
 ---
 
@@ -64,7 +73,7 @@ isEven : Int -> Bool
 isEven x = remainderBy 2 x == 0
 
 pow2 : Int -> Int
-pow2 x = x * x
+pow2 x = x^2
 
 List.range 1 10 
   |> List.filter isEven 
@@ -151,9 +160,9 @@ layout: two-cols
 flowchart TD
   subgraph Browser.sandbox
     direction BT
-    elm(Elm runtime) -->|view model| Browser
+    elm(Elm runtime) -->|view| Browser
     d([DOM]) --- Browser
-    Browser -->|update msg model| elm
+    Browser -->|update| elm
   end
 ```
 
@@ -202,10 +211,10 @@ sub: Side Effects?
 
 <v-clicks>
 
-- Cmd : trigger an effect
+- *Cmd* : command Elm to do an effectful operation
   - Http
   - Random
-- Sub : subscribe to an effect from the outside world
+- *Sub* : subscribe to an effect from the outside world
   - Time
   - Ports
 
@@ -221,13 +230,13 @@ layout: two-cols
 flowchart TD
   subgraph Browser.element
     direction BT
-    elm(Elm runtime) -->|view model| Browser
+    elm(Elm runtime) -->|view| Browser
     d([DOM]) --- Browser
     h([Http]) --- Browser
     t([Time]) --- Browser
     r([Randomness]) --- Browser
     j([Javascript]) --- Browser
-    Browser -->|update msg model| elm
+    Browser -->|update| elm
   end
 ```
 
@@ -309,15 +318,15 @@ layout: cover
 class: text-3xl
 ---
 
-# Elm is not
+# Elm is not the
 
 <div class="fade">
 
 <v-clicks>
 
-- The best programming language
-- The best way to develop frontend apps
-- The silver bullet architecture for state management concerns
+- best programming language
+- best way to develop frontend apps
+- silver bullet architecture for state management concerns
 
 </v-clicks>
 
@@ -335,14 +344,16 @@ layout: cover
 
 # 💗 for joining me!
 
-<carbon-link /> [enolive.github.io/intro-to-elm-architecture](https://enolive.github.io/intro-to-elm-architecture)
-
-<carbon-link /> [Elm Guide](https://guide.elm-lang.org/)
-
-<carbon-link /> [Web Apps in Elm](https://guide.elm-lang.org/webapps/)
-
-<carbon-link /> [Javascript Interop](https://guide.elm-lang.org/interop/)
-
-<carbon-link /> Component testing with [elms-program-test](https://elm-program-test.netlify.app/)
+- <carbon-link /> [enolive.github.io/intro-to-elm-architecture](https://enolive.github.io/intro-to-elm-architecture)
+- <carbon-link /> [Elm Guide](https://guide.elm-lang.org/)
+- <carbon-link /> [Web Apps in Elm](https://guide.elm-lang.org/webapps/)
+- <carbon-link /> [Javascript Interop](https://guide.elm-lang.org/interop/)
+- <carbon-link /> Component testing with [elms-program-test](https://elm-program-test.netlify.app/)
 
 <my-v-card />
+
+<style>
+  li {
+    @apply !list-none m-0
+  }
+</style>
