@@ -16,8 +16,10 @@ jobs:
       - name: Build Chuck Norris App
         run: |
           npm ci
-          npm run lint && npm test
+          npm run lint 
+          npm test
           npm run build:prod
+          mkdir -p ../dist/chuck-norris-app
           cp -rv index.html main.js assets/ ../dist/chuck-norris
         working-directory: ./chuck-norris
       - name: Deploy pages
