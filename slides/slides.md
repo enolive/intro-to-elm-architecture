@@ -15,7 +15,7 @@ layout: intro
 
 Introduction to Elm Architecture
 
-<carbon-link /> [enolive.github.io/intro-to-elm-architecture](https://enolive.github.io/intro-to-elm-architecture/slides)
+<carbon-link /> [enolive.github.io/intro-to-elm-architecture](https://enolive.github.io/intro-to-elm-architecture)
 
 <my-v-card />
 
@@ -330,10 +330,19 @@ class: text-3xl
 </style>
 
 ---
+layout: cover
+---
 
-# More resources
+# 💗 for joining me!
 
-- <carbon-link /> [Elm Guide](https://guide.elm-lang.org/)
-- <carbon-link /> [Web Apps in Elm](https://guide.elm-lang.org/webapps/)
-- <carbon-link /> [Javascript Interop](https://guide.elm-lang.org/interop/)
-- Component testing with <carbon-link /> [elms-program-test](https://elm-program-test.netlify.app/)
+<carbon-link /> [enolive.github.io/intro-to-elm-architecture](https://enolive.github.io/intro-to-elm-architecture)
+
+<carbon-link /> [Elm Guide](https://guide.elm-lang.org/)
+
+<carbon-link /> [Web Apps in Elm](https://guide.elm-lang.org/webapps/)
+
+<carbon-link /> [Javascript Interop](https://guide.elm-lang.org/interop/)
+
+<carbon-link /> Component testing with [elms-program-test](https://elm-program-test.netlify.app/)
+
+<my-v-card />
