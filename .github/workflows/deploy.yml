@@ -20,7 +20,7 @@ jobs:
           npm test
           npm run build:prod
           mkdir -p ../dist/chuck-norris-app
-          cp -rv index.html main.js assets/ ../dist/chuck-norris
+          cp -rv index.html main.js assets/ ../dist/chuck-norris-app
         working-directory: ./chuck-norris
       - name: Deploy pages
         uses: crazy-max/ghaction-github-pages@v2
