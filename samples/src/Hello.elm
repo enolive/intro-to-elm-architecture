@@ -10,6 +10,10 @@ main =
     Browser.sandbox { init = init, view = view, update = update }
 
 
+
+-- MODEL
+
+
 type alias Model =
     { name : String }
 
@@ -23,10 +27,18 @@ init =
     { name = "World" }
 
 
+
+-- UPDATE
+
+
 update msg model =
     case msg of
         GotName name ->
             { model | name = String.trim name }
+
+
+
+-- VIEW
 
 
 view : Model -> Html Msg

@@ -41,70 +41,14 @@ init =
 
 type Msg
     = GotNewTitle String
-    | ToggleTodo Int Bool
-    | AddTodo
     | RemoveTodo Int
+    | AddTodo
+    | ChangeTodoDone Int Bool
 
 
 mkTodo : Int -> String -> Todo
 mkTodo nextId nextTitle =
     { id = nextId, title = nextTitle, done = False }
-
-
-
--- UPDATE
-
-
-update : Msg -> Model -> Model
-update msg model =
-    case msg of
-        GotNewTitle newTitle ->
-            { model | nextTitle = newTitle }
-
-        ToggleTodo id _ ->
-            toggleTodo id model
-
-        AddTodo ->
-            addTodo model
-
-        RemoveTodo id ->
-            removeTodo id model
-
-
-removeTodo : Int -> Model -> Model
-removeTodo id model =
-    { model | todos = List.filter (\item -> item.id /= id) model.todos }
-
-
-addTodo : Model -> Model
-addTodo model =
-    case model.nextTitle of
-        "" ->
-            model
-
-        _ ->
-            { model | todos = addTodoWith model.nextId model.nextTitle model.todos, nextTitle = "", nextId = model.nextId + 1 }
-
-
-addTodoWith : Int -> String -> List Todo -> List Todo
-addTodoWith nextId nextTitle todos =
-    mkTodo nextId nextTitle :: todos
-
-
-toggleTodo : Int -> Model -> Model
-toggleTodo id model =
-    let
-        toggle item =
-            if item.id == id then
-                { item | done = not item.done }
-
-            else
-                item
-
-        changedTodos =
-            List.map toggle model.todos
-    in
-    { model | todos = changedTodos }
 
 
 
@@ -114,9 +58,11 @@ toggleTodo id model =
 view : Model -> Html Msg
 view model =
     div []
-        [ h1 [] [ text "Things todo" ]
+        [ h1 [] [ text "Things to do" ]
         , viewAddTodo model
-        , List.map viewTodo model.todos |> ul []
+        , model.todos
+            |> List.map viewTodo
+            |> ul []
         ]
 
 
@@ -131,7 +77,67 @@ viewAddTodo model =
 viewTodo : Todo -> Html Msg
 viewTodo todo =
     li []
-        [ input [ type_ "checkbox", onCheck (ToggleTodo todo.id), checked todo.done ] []
+        [ input [ type_ "checkbox", onCheck (ChangeTodoDone todo.id), checked todo.done ] []
         , text todo.title
         , button [ onClick (RemoveTodo todo.id) ] [ text "Remove" ]
         ]
+
+
+
+-- UPDATE
+
+
+update : Msg -> Model -> Model
+update msg model =
+    case msg of
+        GotNewTitle newTitle ->
+            { model | nextTitle = newTitle }
+
+        RemoveTodo id ->
+            removeTodo id model
+
+        AddTodo ->
+            addTodo model
+
+        ChangeTodoDone id done ->
+            toggleTodo id done model
+
+
+removeTodo : Int -> Model -> Model
+removeTodo id model =
+    { model | todos = List.filter (\item -> item.id /= id) model.todos }
+
+
+addTodo : Model -> Model
+addTodo model =
+    case model.nextTitle of
+        "" ->
+            model
+
+        _ ->
+            { model
+                | todos = addTodoWith model.nextId model.nextTitle model.todos
+                , nextTitle = ""
+                , nextId = model.nextId + 1
+            }
+
+
+addTodoWith : Int -> String -> List Todo -> List Todo
+addTodoWith nextId nextTitle todos =
+    mkTodo nextId nextTitle :: todos
+
+
+toggleTodo : Int -> Bool -> Model -> Model
+toggleTodo id done model =
+    let
+        toggle item =
+            if item.id == id then
+                { item | done = done }
+
+            else
+                item
+
+        changedTodos =
+            List.map toggle model.todos
+    in
+    { model | todos = changedTodos }
