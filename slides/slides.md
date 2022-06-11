@@ -1,6 +1,5 @@
 ---
 theme: datev-scc
-class: 'text-center'
 lineNumbers: true
 info: |
   ## Introduction to functional frontend architecture
@@ -55,12 +54,12 @@ class: text-3xl
 
 # Ecosystem
 
-| tool       | description                       |
-|------------|-----------------------------------|
-| elm        | compiler                          |
-| elm-format | opinionated formatter             |
-| elm-test   | testing framework                 |
-| elm-live   | better dev server with hot reload |
+|            |                                               |
+|------------|-----------------------------------------------|
+| elm        | compiler                                      |
+| elm-format | opinionated formatter                         |
+| elm-test   | testing framework for examples and properties |
+| elm-live   | better dev server with hot reload             |
 
 install by `npm i <tool> -g`
 
@@ -110,18 +109,19 @@ counter = counter + 1
 
 <v-click>
 
-
 <carbon-arrow-right /> Does not compile!
 
-
-```log
-The `counter` value is defined directly in terms of itself, causing an infinite
-loop.
-
-Are you are trying to mutate a variable? Elm does not have mutation, so when I
-see counter defined in terms of counter, I treat it as a recursive definition.
-Try giving the new value a new name!
-```
+> ...
+> 
+> The `counter` value is defined directly in terms of itself, 
+> causing an infinite
+> loop.
+> 
+> Are you are trying to mutate a variable? Elm does not have mutation, so when I
+> see counter defined in terms of counter, I treat it as a recursive definition.
+> Try giving the new value a new name!
+>
+> ...
 
 </v-click>
 
@@ -137,6 +137,8 @@ inc counter = counter + 1
 ```
 
 <v-click>
+
+more generic version
 
 ```elm
 type alias Model = { counter : Int }
@@ -235,7 +237,7 @@ flowchart TD
     h([Http]) --- Browser
     t([Time]) --- Browser
     r([Randomness]) --- Browser
-    j([Javascript]) --- Browser
+    j([JS Interop]) --- Browser
     Browser -->|update| elm
   end
 ```
@@ -300,8 +302,8 @@ class: text-3xl
 <v-clicks>
 
 - pure functional programming
-- functional state management
-- Model View Update architectures
+- functional frontend apps
+- Model View Update architecture
 
 </v-clicks>
 
