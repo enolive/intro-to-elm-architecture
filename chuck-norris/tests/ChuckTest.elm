@@ -1,11 +1,11 @@
 module ChuckTest exposing (..)
 
-import Main as Sut
 import Expect exposing (Expectation)
 import Fuzz exposing (constant, oneOf, string)
 import Html.Attributes exposing (attribute)
 import Http
 import Json.Decode as D
+import Main as Sut
 import Test exposing (..)
 import Test.Html.Query as Query
 import Test.Html.Selector as Selector exposing (class, tag, text)
@@ -46,7 +46,7 @@ suite =
                 [ fuzz2 modelFuzzer string "Success" <|
                     \model joke ->
                         Sut.update (Sut.ReceivedJoke (Ok { value = joke })) model
-                            |> expectFst (Sut.Success joke)
+                            |> expectFst (Sut.Success (Sut.JokeResponse joke))
                 , fuzz modelFuzzer "Error" <|
                     \model ->
                         Sut.update (Sut.ReceivedJoke (Err Http.NetworkError)) model
@@ -78,7 +78,7 @@ suite =
                     \jokeText ->
                         let
                             model =
-                                Sut.Success jokeText
+                                Sut.Success (Sut.JokeResponse jokeText)
                         in
                         Sut.view model
                             |> Query.fromHtml
@@ -121,4 +121,4 @@ modelFuzzer =
 
 
 modelSuccessFuzzer =
-    Fuzz.map Sut.Success string
+    string |> Fuzz.map Sut.JokeResponse |> Fuzz.map Sut.Success

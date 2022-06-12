@@ -21,7 +21,7 @@ main =
 type Model
     = Failure
     | Loading
-    | Success String
+    | Success JokeResponse
 
 
 type alias JokeResponse =
@@ -67,9 +67,9 @@ viewJoke model =
         Loading ->
             viewSpinner
 
-        Success jokeText ->
+        Success joke ->
             div []
-                [ text ("Did you know? " ++ jokeText) ]
+                [ text ("Did you know? " ++ joke.value) ]
 
 
 viewSpinner : Html Msg
@@ -94,7 +94,7 @@ update msg _ =
         ReceivedJoke result ->
             case result of
                 Ok response ->
-                    ( Success response.value, Cmd.none )
+                    ( Success response, Cmd.none )
 
                 Err _ ->
                     ( Failure, Cmd.none )
