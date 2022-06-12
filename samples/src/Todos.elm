@@ -39,13 +39,6 @@ init =
     }
 
 
-type Msg
-    = GotNewTitle String
-    | RemoveTodo Int
-    | AddTodo
-    | ChangeTodoDone Int Bool
-
-
 mkTodo : Int -> String -> Todo
 mkTodo nextId nextTitle =
     { id = nextId, title = nextTitle, done = False }
@@ -85,6 +78,13 @@ viewTodo todo =
 
 
 -- UPDATE
+
+
+type Msg
+    = GotNewTitle String
+    | RemoveTodo Int
+    | AddTodo
+    | ChangeTodoDone Int Bool
 
 
 update : Msg -> Model -> Model

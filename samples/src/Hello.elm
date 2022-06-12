@@ -18,10 +18,6 @@ type alias Model =
     { name : String }
 
 
-type Msg
-    = GotName String
-
-
 init : Model
 init =
     { name = "World" }
@@ -29,6 +25,10 @@ init =
 
 
 -- UPDATE
+
+
+type Msg
+    = GotName String
 
 
 update msg model =
@@ -58,6 +58,7 @@ view model =
         ]
 
 
+viewName : Model -> Html Msg
 viewName model =
     if model.name /= "" then
         p [] [ text ("Hello " ++ model.name ++ "!") ]
@@ -66,5 +67,6 @@ viewName model =
         emptyNode
 
 
+emptyNode : Html Msg
 emptyNode =
     text ""

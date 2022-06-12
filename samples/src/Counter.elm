@@ -9,18 +9,21 @@ main =
     Browser.sandbox { init = init, view = view, update = update }
 
 
+
+-- MODEL
+
+
 type alias Model =
     Int
-
-
-type Msg
-    = Increment
-    | Decrement
 
 
 init : Model
 init =
     0
+
+
+
+-- VIEW
 
 
 view : Model -> Html Msg
@@ -32,6 +35,15 @@ view model =
             , button [ onClick Decrement ] [ text "-" ]
             ]
         ]
+
+
+
+-- UPDATE
+
+
+type Msg
+    = Increment
+    | Decrement
 
 
 update : Msg -> Model -> Model
