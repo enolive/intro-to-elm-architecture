@@ -36,7 +36,7 @@ class: text-3xl
 
 - since 2012 (current version 0.19.1)
 - purely functional, static typed language
-- syntax similar to Haskell, but easier
+- syntactic "Haskell-light"
 - single purpose language for Frontend Development
 - inspiration for Redux
 
@@ -216,9 +216,12 @@ sub: Side Effects?
 - *Cmd* : command Elm to do an effectful operation
   - Http
   - Random
-- *Sub* : subscribe to an effect from the outside world
   - Time
+  - `Cmd.none`
+- *Sub* : subscribe to an effect from the outside world
+  - Interval
   - Ports
+  - `Sub.none`
 
 </v-clicks>
 
