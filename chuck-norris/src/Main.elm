@@ -28,14 +28,9 @@ type alias JokeResponse =
     { value : String }
 
 
-type Msg
-    = ReceivedJoke (Result Http.Error JokeResponse)
-    | RefreshJoke
-
-
 init : () -> ( Model, Cmd Msg )
-init _ =
-    ( Loading, getRandomJoke )
+init =
+    always ( Loading, getRandomJoke )
 
 
 
@@ -86,6 +81,11 @@ role value =
 
 
 -- UPDATE
+
+
+type Msg
+    = ReceivedJoke (Result Http.Error JokeResponse)
+    | RefreshJoke
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
