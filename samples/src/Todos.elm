@@ -53,9 +53,7 @@ view model =
     div []
         [ h1 [] [ text "Things to do" ]
         , viewAddTodo model
-        , model.todos
-            |> List.map viewTodo
-            |> ul []
+        , ul [] <| List.map viewTodo model.todos
         ]
 
 
@@ -70,9 +68,9 @@ viewAddTodo model =
 viewTodo : Todo -> Html Msg
 viewTodo todo =
     li []
-        [ input [ type_ "checkbox", onCheck (ChangeTodoDone todo.id), checked todo.done ] []
+        [ input [ type_ "checkbox", onCheck <| ChangeTodoDone todo.id, checked todo.done ] []
         , text todo.title
-        , button [ onClick (RemoveTodo todo.id) ] [ text "Remove" ]
+        , button [ onClick <| RemoveTodo todo.id ] [ text "Remove" ]
         ]
 
 
