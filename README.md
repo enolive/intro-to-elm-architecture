@@ -1,7 +1,7 @@
 # Introduction to Elm Architecture
 
 This repo contains the slides and example code for my presentation about 
-Elm's architecture.
+Elm's architecture and why it is interesting.
 
 ## View Online
 
